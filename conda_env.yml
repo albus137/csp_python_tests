@@ -1,0 +1,8 @@
+name: csp_python_tests
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - python-constraint
+  - pyexcel
+  - pyexcel-ods3
