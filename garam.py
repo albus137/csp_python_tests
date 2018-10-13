@@ -2,7 +2,6 @@
 
 from constraint import *
 import pyexcel as pe
-from pprint import pprint
 from time import time
 
 # create the problem object
