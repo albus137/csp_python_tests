@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+
 # modules python-constraint, pyexcel and pyexcel-ods3
 # have been installed
+
 from constraint import *
 import pyexcel as pe
 from pprint import pprint

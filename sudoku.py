@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from constraint import *
 from pprint import pprint
 
