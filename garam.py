@@ -60,7 +60,7 @@ v_constraints = []
 for k in range(len(v_constraints_origins)):
     i_origin, j_origin = v_constraints_origins[k]
 
-    if k==2 or k==7:
+    if k == 2 or k == 7:
         nb_cases = 5
     else:
         nb_cases = 6
