@@ -12,6 +12,8 @@ grid = pe.get_array(file_name='csp_grid.ods')
 n_lines, n_cols = len(grid), len(grid[0])
 
 # display the Garam grid nicely
+print('Initial grid:')
+print()
 for i in range(n_lines):
     for j in range(n_cols):
         if grid[i][j] == '':
@@ -70,7 +72,6 @@ for k in range(len(v_constraints_origins)):
 
 # add the constraints to the problem
 constraints = h_constraints + v_constraints
-print(len(constraints))
 
 for constraint in constraints:
     # get the operation type (+, - or *)
@@ -86,9 +87,11 @@ for constraint in constraints:
             constraint_function = lambda a, b, c: a*b == c
 
         problem.addConstraint(constraint_function, (constraint[0], constraint[2], constraint[4]))
-        print('{}{}{}={}'.format(grid[constraint[0][0]][constraint[0][1]], op,
-               grid[constraint[2][0]][constraint[2][1]],
-               grid[constraint[4][0]][constraint[4][1]]))
+
+        print('{}{}{}={}'.format(grid[constraint[0][0]][constraint[0][1]],
+                                 op,
+                                 grid[constraint[2][0]][constraint[2][1]],
+                                 grid[constraint[4][0]][constraint[4][1]]))
     elif len(constraint) == 6:
         if op == '+':
             constraint_function = lambda a, b, c, d: a+b == c*10+d
@@ -99,22 +102,25 @@ for constraint in constraints:
 
         problem.addConstraint(constraint_function, (constraint[0], constraint[2], constraint[4], constraint[5]))
 
-        a1 = grid[constraint[0][0]][constraint[0][1]]
-        a2 = op
-        a3 = grid[constraint[2][0]][constraint[2][1]]
-        a4 = grid[constraint[4][0]][constraint[4][1]]
-        a5 = grid[constraint[5][0]][constraint[5][1]]
-        print('{}{}{}={}{}'.format(a1, a2, a3, a4, a5))
+        print('{}{}{}={}{}'.format(grid[constraint[0][0]][constraint[0][1]],
+                                   op,
+                                   grid[constraint[2][0]][constraint[2][1]],
+                                   grid[constraint[4][0]][constraint[4][1]],
+                                   grid[constraint[5][0]][constraint[5][1]]))
+
 print()
-print()
-print(len(problem.__dict__['_constraints']))
+print('Solving the problem...')
 
 # solve the problem
 start = time()
 solution = problem.getSolution()
 end = time()
-print('elapsed: {}'.format(end-start))
+print('Elapsed time: {:.0f} s'.format(end-start))
 
+# display the solution
+print()
+print('Solved grid:')
+print()
 for i in range(n_lines):
     for j in range(n_cols):
         if grid[i][j] == '?' or type(grid[i][j]) == int:
