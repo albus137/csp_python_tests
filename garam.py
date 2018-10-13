@@ -69,13 +69,6 @@ for k in range(len(v_constraints_origins)):
     v_constraints.append(constraint)
 
 # add the constraints to the problem
-## equality constraints
-# for i in range(n_lines):
-    # for j in range(n_cols):
-        # if type(grid[i][j]) == int:
-            # problem.addConstraint(ExactSumConstraint(grid[i][j]), [grid_coor[i][j]])
-
-## other constraints
 constraints = h_constraints + v_constraints
 print(len(constraints))
 
